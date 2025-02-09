@@ -15,11 +15,11 @@ class Student(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, student_id: int=None, first_name: str=None, last_name: str=None, grade_records: List[GradeRecord]=None):  # noqa: E501
+    def __init__(self, _id: str=None, first_name: str=None, last_name: str=None, grade_records: List[GradeRecord]=None):  # noqa: E501
         """Student - a model defined in Swagger
 
-        :param student_id: The student_id of this Student.  # noqa: E501
-        :type student_id: int
+        :param _id: The id of this Student.  # noqa: E501
+        :type _id: str
         :param first_name: The first_name of this Student.  # noqa: E501
         :type first_name: str
         :param last_name: The last_name of this Student.  # noqa: E501
@@ -28,19 +28,19 @@ class Student(Model):
         :type grade_records: List[GradeRecord]
         """
         self.swagger_types = {
-            'student_id': int,
+            '_id': str,
             'first_name': str,
             'last_name': str,
             'grade_records': List[GradeRecord]
         }
 
         self.attribute_map = {
-            'student_id': 'student_id',
+            '_id': '_id',
             'first_name': 'first_name',
             'last_name': 'last_name',
             'grade_records': 'grade_records'
         }
-        self._student_id = student_id
+        self.__id = _id
         self._first_name = first_name
         self._last_name = last_name
         self._grade_records = grade_records
@@ -57,25 +57,25 @@ class Student(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def student_id(self) -> int:
-        """Gets the student_id of this Student.
+    def _id(self) -> str:
+        """Gets the _id of this Student.
 
 
-        :return: The student_id of this Student.
+        :return: The _id of this Student.
         :rtype: int
         """
-        return self._student_id
+        return self.__id
 
-    @student_id.setter
-    def student_id(self, student_id: int):
-        """Sets the student_id of this Student.
+    @_id.setter
+    def _id(self, _id: str):
+        """Sets the _id of this Student.
 
 
-        :param student_id: The student_id of this Student.
-        :type student_id: int
+        :param _id: The _id of this Student.
+        :type _id: str
         """
 
-        self._student_id = student_id
+        self.__id = _id
 
     @property
     def first_name(self) -> str:

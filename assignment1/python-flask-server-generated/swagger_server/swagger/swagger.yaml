@@ -12,13 +12,13 @@ servers:
 - url: https://virtserver.swaggerhub.com/tutorial/1.0.0
   description: SwaggerHub API Auto Mocking
 paths:
-  /student/{student_id}:
+  /student/{_id}:
     get:
       summary: gets student
       description: Returns a single student
       operationId: get_student_by_id
       parameters:
-      - name: student_id
+      - name: _id
         in: path
         description: the uid
         required: true
@@ -26,7 +26,6 @@ paths:
         explode: false
         schema:
           type: string
-          format: uuid
       responses:
         "200":
           description: Successful operation
@@ -45,7 +44,7 @@ paths:
         delete a single student
       operationId: delete_student
       parameters:
-      - name: student_id
+      - name: _id
         in: path
         description: the uid
         required: true
@@ -53,20 +52,17 @@ paths:
         explode: false
         schema:
           type: string
-          format: uuid
       responses:
         "200":
           description: Successful operation
           content:
             application/json:
               schema:
-                type: object
-                format: Student
-                x-content-type: application/json
+                $ref: '#/components/schemas/Student'
         "400":
           description: Bad Request
         "404":
-          description: Student with specified student_id cannot be found
+          description: Not found
       x-openapi-router-controller: swagger_server.controllers.default_controller
   /student:
     post:
@@ -85,9 +81,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                format: uuid
-                x-content-type: application/json
+                $ref: '#/components/schemas/Student'
         "400":
           description: "invalid input, object invalid"
         "409":
@@ -101,16 +95,16 @@ components:
       - last_name
       type: object
       properties:
-        student_id:
-          type: integer
-          example: 0
+        _id:
+          type: string
+          example: abcdef0123456789abcdef
         first_name:
           type: string
           example: John
         last_name:
           type: string
           example: Doe
-        gradeRecords:
+        grade_records:
           type: array
           example:
             - subject_name: Math
@@ -118,9 +112,9 @@ components:
           items:
             $ref: '#/components/schemas/GradeRecord'
       example:
-        student_id: 0
+        _id: abcdef0123456789abcdef
         last_name: Doe
-        gradeRecords:
+        grade_records:
           - subject_name: Math
             grade: 5
         first_name: John
