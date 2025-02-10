@@ -1,7 +1,7 @@
 version: '3'
 services:
   student_service:
-    image: devops/student_service
+    image: r0drigo/devops/student_service
     restart: unless-stopped
     depends_on:
       - mongo
