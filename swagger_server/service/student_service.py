@@ -1,11 +1,8 @@
 import os
-import tempfile
-from functools import reduce
 
 from bson import ObjectId
 from pymongo import MongoClient
 
-from swagger_server.models import Student
 
 if "MONGO_URI" in os.environ:
     client = MongoClient(os.environ['MONGO_URI'])
@@ -14,6 +11,7 @@ else:
 
 db = client["app"]
 student_collection = db["students"]
+id_counter = db["id_counter"]
 
 def add(student=None):
     results = student_collection.find_one(
