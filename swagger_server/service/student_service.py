@@ -23,9 +23,8 @@ def add(student=None):
 
     student = student.to_dict()
     student.pop('_id')
-    student["_id"] = str(student_collection.insert_one(student).inserted_id)
 
-    return student
+    return str(student_collection.insert_one(student).inserted_id)
 
 
 def get_by_id(student_id=None, subject=None):
