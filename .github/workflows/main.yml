@@ -2,7 +2,7 @@ name: Build Test and push
 on: [push]
 env:
   IMAGE_NAME: student_service
-  REPO_NAME: r0drigo/devops
+  REPO_NAME: r0drigo
 
 jobs:
   build:
